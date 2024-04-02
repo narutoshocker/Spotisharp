@@ -156,9 +156,9 @@ await Task.WhenAll(Enumerable.Range(0, workersCount).Select(async workerId =>
             continue;
         }
 
-        CConsole.WriteLine($"W #{workerId} ::: Getting Lyrics ::: {fullName}", CConsoleType.Debug);
-        Task<string> lyricsTask = 
-            MusixmatchService.SearchLyricsFromText(fullName);
+        //CConsole.WriteLine($"W #{workerId} ::: Getting Lyrics ::: {fullName}", CConsoleType.Debug);
+        /*Task<string> lyricsTask = 
+            MusixmatchService.SearchLyricsFromText(fullName);*/
 
         CConsole.WriteLine($"W #{workerId} ::: Getting youtube links ::: {fullName}", CConsoleType.Debug);
         string[] results = await YoutubeService.SearchByText(fullName, 3);
@@ -277,7 +277,7 @@ await Task.WhenAll(Enumerable.Range(0, workersCount).Select(async workerId =>
             file.Tag.AlbumArtists = new string[] { trackInfo.Artist };
             file.Tag.Composers = new string[] { trackInfo.Artist };
             file.Tag.Copyright = trackInfo.Copyright;
-            file.Tag.Lyrics = await lyricsTask;
+            //file.Tag.Lyrics = await lyricsTask;
             file.Tag.Title = trackInfo.Title;
             file.Tag.Album = trackInfo.Album;
             file.Tag.Track = Convert.ToUInt32(trackInfo.TrackNumber);
