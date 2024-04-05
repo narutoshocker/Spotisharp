@@ -71,7 +71,7 @@ public static class SpotifyService
                 DiscNumber = track.DiscNumber,
                 TrackNumber = track.TrackNumber,
                 Album = album.Name,
-                AlbumPicture = album.Images[0].Url,
+                AlbumPicture = album.Images.FirstOrDefault()?.Url ?? string.Empty,
                 Copyright = album.Copyrights.FirstOrDefault()?.Text ?? string.Empty,
                 Genres = artist.Genres.FirstOrDefault() ?? string.Empty,
                 Year = DateTime.TryParse(album.ReleaseDate, out var value) ? value.Year : int.Parse(album.ReleaseDate)
@@ -126,7 +126,7 @@ public static class SpotifyService
                         DiscNumber = track.DiscNumber,
                         TrackNumber = track.TrackNumber,
                         Album = album.Name,
-                        AlbumPicture = album.Images[0].Url,
+                        AlbumPicture = album.Images.FirstOrDefault()?.Url ?? string.Empty,
                         Copyright = album.Copyrights.FirstOrDefault()?.Text ?? string.Empty,
                         Genres = artist.Genres.FirstOrDefault() ?? string.Empty,
                         Year = DateTime.TryParse(album.ReleaseDate, out var value) ? value.Year : int.Parse(album.ReleaseDate)
@@ -169,7 +169,7 @@ public static class SpotifyService
                 DiscNumber = track.DiscNumber,
                 TrackNumber = track.TrackNumber,
                 Album = album.Name ?? string.Empty,
-                AlbumPicture = album.Images[0].Url,
+                AlbumPicture = album.Images.FirstOrDefault()?.Url ?? string.Empty,
                 Copyright = album.Copyrights.FirstOrDefault()?.Text ?? string.Empty,
                 Genres = artist.Genres.FirstOrDefault() ?? string.Empty,
                 Year = DateTime.TryParse(album.ReleaseDate, out var value) ? value.Year : int.Parse(album.ReleaseDate)
